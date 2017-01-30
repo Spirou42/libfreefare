@@ -39,24 +39,14 @@
  * dealt with).
  */
 
-#if !defined(le32toh) && defined(letoh32)
-#  define le32toh(x) letoh32(x)
-#  define be32toh(x) betoh32(x)
-#endif
-
-#if !defined(le16toh) && defined(letoh16)
-#  define le16toh(x) letoh16(x)
-#  define be16toh(x) betoh16(x)
-#endif
-
-#if !defined(le32toh) && defined(CFSwapInt32LittleToHost)
+#if !defined(le32toh) //&& defined(CFSwapInt32LittleToHost)
 #  define be32toh(x) CFSwapInt32BigToHost(x)
 #  define htobe32(x) CFSwapInt32HostToBig(x)
 #  define le32toh(x) CFSwapInt32LittleToHost(x)
 #  define htole32(x) CFSwapInt32HostToLittle(x)
 #endif
 
-#if !defined(le16toh) && defined(CFSwapInt16LittleToHost)
+#if !defined(le16toh) //&& defined(CFSwapInt16LittleToHost)
 #  define be16toh(x) CFSwapInt16BigToHost(x)
 #  define htobe16(x) CFSwapInt16HostToBig(x)
 #  define le16toh(x) CFSwapInt16LittleToHost(x)
@@ -89,6 +79,16 @@
 #    define htole16(x) (bswap_16(x))
 #    define le16toh(x) (bswap_16(x))
 #  endif
+#endif
+
+#if !defined(le32toh) && defined(letoh32)
+#  define le32toh(x) letoh32(x)
+#  define be32toh(x) betoh32(x)
+#endif
+
+#if !defined(le16toh) && defined(letoh16)
+#  define le16toh(x) letoh16(x)
+#  define be16toh(x) betoh16(x)
 #endif
 
 #define MIN(a, b) (((a) < (b)) ? (a) : (b))
@@ -250,7 +250,7 @@ struct mifare_ultralight_tag {
 #define ASSERT_ACTIVE(tag) do { if (!tag->active) return errno = ENXIO, -1; } while (0)
 #define ASSERT_INACTIVE(tag) do { if (tag->active) return errno = ENXIO, -1; } while (0)
 
-/* 
+/*
  * FreefareTag cast macros
  *
  * This macros are intended to provide a convenient way to cast abstract
@@ -278,7 +278,7 @@ struct mifare_ultralight_tag {
 
 /*
  * Buffer management macros.
- * 
+ *
  * The following macros ease setting-up and using buffers:
  * BUFFER_INIT (data, 5);      // data -> [ xx, xx, xx, xx, xx ]
  * BUFFER_SIZE (data);         // size -> 0

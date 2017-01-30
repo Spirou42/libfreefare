@@ -1,11 +1,11 @@
 /*-
  * Copyright (C) 2015, Romain Tartiere.
- * 
+ *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
  * Free Software Foundation, either version 3 of the License, or (at your
  * option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
  * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
@@ -21,8 +21,9 @@
 #include <err.h>
 #include <stdlib.h>
 #include <unistd.h>
-
+#include <CoreFoundation/CoreFoundation.h>
 #if defined(HAVE_SYS_ENDIAN_H)
+
 #  include <sys/endian.h>
 #endif
 
@@ -33,6 +34,20 @@
 #include <nfc/nfc.h>
 
 #include <freefare.h>
+
+#if !defined(le32toh) //&& defined(CFSwapInt32LittleToHost)
+#  define be32toh(x) CFSwapInt32BigToHost(x)
+#  define htobe32(x) CFSwapInt32HostToBig(x)
+#  define le32toh(x) CFSwapInt32LittleToHost(x)
+#  define htole32(x) CFSwapInt32HostToLittle(x)
+#endif
+
+#if !defined(le16toh) //&& defined(CFSwapInt16LittleToHost)
+#  define be16toh(x) CFSwapInt16BigToHost(x)
+#  define htobe16(x) CFSwapInt16HostToBig(x)
+#  define le16toh(x) CFSwapInt16LittleToHost(x)
+#  define htole16(x) CFSwapInt16HostToLittle(x)
+#endif
 
 #define NDEF_BUFFER_SIZE 512
 
