@@ -1,3 +1,7 @@
+
+# This fork is to be used by my NFC - Tests 
+For the real __thing__, please go to [nfc-tools](https://github.com/nfc-tools/libfreefare)
+
 # Introduction
 
 [![Join the chat at https://gitter.im/nfc-tools/libfreefare](https://badges.gitter.im/nfc-tools/libfreefare.svg)](https://gitter.im/nfc-tools/libfreefare?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
