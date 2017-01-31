@@ -151,11 +151,11 @@ void		 cmac_generate_subkeys (MifareDESFireKey key);
 void		 cmac (const MifareDESFireKey key, uint8_t *ivect, const uint8_t *data, size_t len, uint8_t *cmac);
 void		*assert_crypto_buffer_size (FreefareTag tag, size_t nbytes);
 
-#define MIFARE_ULTRALIGHT_PAGE_COUNT  0x10
+#define MIFARE_ULTRALIGHT_PAGE_COUNT  0xE5
 #define MIFARE_ULTRALIGHT_C_PAGE_COUNT 0x30
 #define MIFARE_ULTRALIGHT_C_PAGE_COUNT_READ 0x2C
 // Max PAGE_COUNT of the Ultralight Family:
-#define MIFARE_ULTRALIGHT_MAX_PAGE_COUNT 0x30
+#define MIFARE_ULTRALIGHT_MAX_PAGE_COUNT 0xE5
 
 /*
  * This structure is common to all supported MIFARE targets but shall not be
