@@ -55,7 +55,9 @@ freefare_tag_new (nfc_device *device, nfc_target target)
     return tag;
 }
 
-
+nfc_device *freefare_tag_get_device(FreefareTag tag){
+  return tag->device;
+}
 /*
  * MIFARE card common functions
  *

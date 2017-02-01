@@ -1,11 +1,11 @@
 /*-
  * Copyright (C) 2009, 2010, Romain Tartiere, Romuald Conty.
- * 
+ *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
  * Free Software Foundation, either version 3 of the License, or (at your
  * option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
  * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
@@ -54,14 +54,15 @@ typedef struct mifare_desfire_key *MifareDESFireKey;
 typedef uint8_t MifareUltralightPageNumber;
 typedef unsigned char MifareUltralightPage[4];
 
-FreefareTag	*freefare_get_tags (nfc_device *device);
-FreefareTag	 freefare_tag_new (nfc_device *device, nfc_target target);
-enum freefare_tag_type freefare_get_tag_type (FreefareTag tag);
-const char	*freefare_get_tag_friendly_name (FreefareTag tag);
-char		*freefare_get_tag_uid (FreefareTag tag);
-void		 freefare_free_tag (FreefareTag tag);
-void		 freefare_free_tags (FreefareTag *tags);
-bool		 freefare_selected_tag_is_present(nfc_device *device);
+FreefareTag	            *freefare_get_tags (nfc_device *device);
+FreefareTag	            freefare_tag_new (nfc_device *device, nfc_target target);
+enum freefare_tag_type  freefare_get_tag_type (FreefareTag tag);
+const char	            *freefare_get_tag_friendly_name (FreefareTag tag);
+char		                *freefare_get_tag_uid (FreefareTag tag);
+nfc_device              *freefare_get_tag_device(FreefareTag tag);
+void		                freefare_free_tag (FreefareTag tag);
+void		                freefare_free_tags (FreefareTag *tags);
+bool		                freefare_selected_tag_is_present(nfc_device *device);
 
 const char	*freefare_strerror (FreefareTag tag);
 int		 freefare_strerror_r (FreefareTag tag, char *buffer, size_t len);
